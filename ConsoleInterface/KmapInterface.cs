@@ -31,21 +31,23 @@ namespace ConsoleInterface
 
         protected override void interpretInput(String input)
         {
-            if (input.Equals("new"))
+            switch (input)
             {
-                newKmap();
-            }
-            else if (input.Equals("print"))
-            {
-                Console.WriteLine(currentKmap.ToString());
-            }
-            else if (input.Equals("minterms"))
-            {
-                Console.WriteLine(currentKmap.MintermString());
-            }
-            else if (input.Equals("expression"))
-            {
-                Console.WriteLine(currentKmap.getSimpleExpression());
+                case "new":
+                    newKmap();
+                    break;
+                case "print":
+                    Console.WriteLine(currentKmap.ToString());
+                    break;
+                case "minterms":
+                    Console.WriteLine(currentKmap.MintermString());
+                    break;
+                case "expression":
+                    Console.WriteLine(currentKmap.getSimpleExpression());
+                    break;
+                default:
+                    Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
+                    break;
             }
         }
 

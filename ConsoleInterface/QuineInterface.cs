@@ -31,33 +31,31 @@ namespace ConsoleInterface
 
         protected override void interpretInput(String input)
         {
-            if (input.Equals("new"))
+            switch (input)
             {
-                this.currentQuine = new Quine(getMintermlist());
-            }
-            else if (input.Equals("print"))
-            {
-                Console.WriteLine(currentQuine.ToString());
-            }
-            else if (input.Equals("step"))
-            {
-                Console.WriteLine("Press enter to step through");
-                currentQuine.StepThrough();
-            }
-            else if (input.Equals("minterms"))
-            {
-                Console.WriteLine(currentQuine.mintermString());
-            }
-            else if (input.Equals("expression"))
-            {
-                Console.WriteLine(currentQuine.ExpressionString());
-            }
-            else if (input.Equals("column"))
-            {
-                Console.Write("What column would you like to print?: \n");
-                Console.WriteLine(currentQuine.columnString(getNumber()));
+                case "new":
+                    this.currentQuine = new Quine(getMintermlist());
+                    break;
+                case "print":
+                    Console.WriteLine(currentQuine.ToString());
+                    break;
+                case "step":
+                    currentQuine.StepThrough();
+                    break;
+                case "minterms":
+                    Console.WriteLine(currentQuine.mintermString());
+                    break;
+                case "expression":
+                    Console.WriteLine(currentQuine.ExpressionString());
+                    break;
+                case "column":
+                    Console.Write("What column would you like to print?: \n");
+                    Console.WriteLine(currentQuine.columnString(getNumber()));
+                    break;
+                default:
+                    Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
+                    break;
             }
         }
-
     }
 }

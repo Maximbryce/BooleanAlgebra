@@ -23,49 +23,47 @@ namespace ConsoleInterface
             print += "Simplify the current expression : 'equal'\n";
             print += "Get the minterms the current Expression : 'minterms'\n";
             print += "Print a truth table representing the current expression: 'table'\n";
-            print += "Check if a different expression is equivilent to the current one: 'simplify'\n";
+            print += "Check if a different expression is equivilent to the current one: 'equal'\n";
 
             Console.Write(print);
         }
 
         protected override void interpretInput(String input)
         {
-            if (input.Equals("new"))
+            switch (input)
             {
-                String expression = getExpression();
-                if (expression.Equals("")) { }
-                else
-                {
-                    this.currentExpression= new BooleanExpression(expression);
-                }
-            }
-            else if (input.Equals("print"))
-            {
-                Console.WriteLine(currentExpression.ToString());
-            }
-            else if (input.Equals("minterms"))
-            {
-                Console.WriteLine(currentExpression.getMinterms());
-            }
-            else if (input.Equals("table"))
-            {
-                Console.WriteLine(currentExpression.getTruthTable());
-            }
-            else if (input.Equals("equal"))
-            {
-                String expression = getExpression();
-                if (expression.Equals("")) { }
-                else
-                {
-                    BooleanExpression tempCompare = new BooleanExpression(expression);
-                    Boolean equality = this.currentExpression.Equals(tempCompare);
-                    if (equality) { Console.WriteLine("The two expressions are equal");}
-                    else { Console.WriteLine("The two expressions are not equal"); }
-                }
-            }
-            else if (input.Equals("simplify"))
-            {
-                this.currentExpression = currentExpression.simplify();
+                case "new":
+                    String expression = getExpression();
+                    if (!expression.Equals(""))
+                    {
+                        this.currentExpression = new BooleanExpression(expression);
+                    }
+                    break;
+                case "print":
+                    Console.WriteLine(currentExpression.ToString());
+                    break;
+                case "minterms":
+                    Console.WriteLine(currentExpression.getMinterms());
+                    break;
+                case "table":
+                    Console.WriteLine(currentExpression.getTruthTable());
+                    break;
+                case "equal":
+                    String newExpression = getExpression();
+                    if (!newExpression.Equals(""))
+                    {
+                        BooleanExpression tempCompare = new BooleanExpression(newExpression);
+                        Boolean equality = this.currentExpression.Equals(tempCompare);
+                        if (equality)
+                        {
+                            Console.WriteLine("The two expressions are equal");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The two expressions are not equal");
+                        }
+                    }
+                    break;
             }
         }
     }

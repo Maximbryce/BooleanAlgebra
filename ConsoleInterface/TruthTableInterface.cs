@@ -27,23 +27,22 @@ namespace ConsoleInterface
 
         protected override void interpretInput(String input)
         {
-            if (input.Equals("new"))
+            switch(input)
             {
-                String expression = getExpression();
-                if (expression.Equals("")){ Console.WriteLine("Canceling");}
-                else {this.currentTable = new TruthTable(new BooleanExpression(expression));}
-            }
-            else if (input.Equals("print"))
-            {
-                Console.WriteLine(this.currentTable.ToString());
-            }
-            else if (input.Equals("expresion"))
-            {
-                Console.WriteLine(this.currentTable.expression);
-            }
-            else if (input.Equals("minterms"))
-            {
-                Console.WriteLine(this.currentTable.MintermString());
+                case "new":
+                    String expression = getExpression();
+                    if (expression.Equals("")) { Console.WriteLine("Canceling"); }
+                    else { this.currentTable = new TruthTable(new BooleanExpression(expression)); }
+                    break;
+                case "print":
+                    Console.WriteLine(this.currentTable.ToString());
+                    break;
+                case "expression":
+                    Console.WriteLine(this.currentTable.expression);
+                    break;
+                case "minterms":
+                    Console.WriteLine(this.currentTable.MintermString());
+                    break;
             }
         }
     }

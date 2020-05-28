@@ -53,27 +53,24 @@ namespace ConsoleInterface
         
         protected virtual void interpretInput(String input)
         {
-            if (input.Equals("kmap"))
+            switch (input)
             {
-                new KmapInterface();
+                case "kmap":
+                    new KmapInterface();
+                    break;
+                case "quine":
+                    new QuineInterface();
+                    break;
+                case "expression":
+                    new ExpressionInterface();
+                    break;
+                case "table":
+                    new TruthTableInterface();
+                    break;
+                default:
+                    Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
+                    break;
             }
-            else if (input.Equals("quine"))
-            {
-                new QuineInterface();
-            }
-            else if (input.Equals("expression"))
-            {
-                new ExpressionInterface();
-            }
-            else if (input.Equals("table"))
-            {
-                new TruthTableInterface();
-            }
-            else
-            {
-                Console.WriteLine("Invalid command, please enter a new command, type help for options");
-            }
-
         }
 
 
