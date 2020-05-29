@@ -69,6 +69,8 @@ namespace ConsoleInterface
                 case "table":
                     new TruthTableInterface();
                     break;
+                case "exit":
+                    break;
                 default:
                     Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
                     break;
@@ -86,14 +88,14 @@ namespace ConsoleInterface
                 Console.Write("> ");
                 userInput = Console.ReadLine();
                 int number;
-                bool isNmber = int.TryParse(userInput, out number);
-                if (!isNmber)
-                {
-                    Console.WriteLine("Not a number please enter a different");
-                }
-                else
+                bool isNumber = int.TryParse(userInput, out number);
+                if (isNumber)
                 {
                     minterms.Add(number);
+                }
+                else if(!isNumber && !(userInput.Equals("") || userInput.Equals("cancel")))
+                {
+                    Console.WriteLine("Not a number please enter a different");
                 }
 
             } while (!userInput.Equals("") || userInput.Equals("cancel"));
@@ -130,9 +132,10 @@ namespace ConsoleInterface
 
             return num;
         }
-        protected bool hasCurrentObject()
+
+        protected virtual bool hasCurrentObject()
         {
-            if (this.currentObject == null)
+            if (currentObject == null)
             {
                 Console.WriteLine("There is no current object, create one first");
                 return false;

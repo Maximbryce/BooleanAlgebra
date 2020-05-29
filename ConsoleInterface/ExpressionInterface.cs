@@ -71,10 +71,21 @@ namespace ConsoleInterface
                         }
                     }
                     break;
+                case "exit":
+                    break;
                 default:
                     Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
                     break;
             }
+        }
+        protected virtual bool hasCurrentObject()
+        {
+            if (currentObject == null)
+            {
+                Console.WriteLine("There is no current object, create one first");
+                return false;
+            }
+            return true;
         }
     }
 }

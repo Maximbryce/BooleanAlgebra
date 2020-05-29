@@ -31,7 +31,7 @@ namespace ConsoleInterface
             {
                 case "new":
                     String expression = getExpression();
-                    if (expression.Equals("")) { Console.WriteLine("Canceling"); }
+                    if (expression.Equals("")) { Console.WriteLine("Canceling:"); }
                     else { this.currentObject = new TruthTable(new BooleanExpression(expression));}
                     break;
                 case "print":
@@ -43,10 +43,21 @@ namespace ConsoleInterface
                 case "minterms":
                     if (this.hasCurrentObject()) {Console.WriteLine(this.currentObject.MintermString());}
                     break;
+                case "exit":
+                    break;
                 default:
                     Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
                     break;
             }
+        }
+        protected virtual bool hasCurrentObject()
+        {
+            if (currentObject == null)
+            {
+                Console.WriteLine("There is no current object, create one first");
+                return false;
+            }
+            return true;
         }
     }
 }
