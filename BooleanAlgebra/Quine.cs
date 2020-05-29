@@ -128,6 +128,7 @@ namespace BooleanAlgebra
             return retString.ToString();
         }
 
+        //returns the simplest form of this quine in booleanexpression format as a string
         public String ExpressionString()
         {
             if (!this.fullySimplified)
@@ -138,6 +139,7 @@ namespace BooleanAlgebra
             return Implicant.ConvertToExpression(this.essentialImplicants);
         }
         
+        //Returns a String representing a specific column
         public String columnString(int i)
         {
             if(i > this.columns.Count - 1)

@@ -24,6 +24,7 @@ namespace ConsoleInterface
             print += "Get the minterms the current Expression : 'minterms'\n";
             print += "Print a truth table representing the current expression: 'table'\n";
             print += "Check if a different expression is equivilent to the current one: 'equal'\n";
+            print += "Simplify the current expression: 'simplify'\n";
 
             Console.Write(print);
         }
@@ -43,7 +44,7 @@ namespace ConsoleInterface
                     if (this.hasCurrentObject()) {Console.WriteLine(currentObject.ToString());}
                     break;
                 case "minterms":
-                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.getMinterms());}
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.getMintermString());}
                     break;
                 case "table":
                     if (this.hasCurrentObject()) {Console.WriteLine(currentObject.getTruthTable());}
@@ -70,6 +71,11 @@ namespace ConsoleInterface
                             }
                         }
                     }
+                    break;
+                //TODO This returns different variables, maybe hardcode the variables used into the implicant translation function on the Implicant class
+                case "simplify":
+                    Quine simplification = new Quine(this.currentObject.getMintermList());
+                    Console.WriteLine(simplification.ExpressionString());
                     break;
                 case "exit":
                     break;

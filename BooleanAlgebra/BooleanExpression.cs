@@ -204,17 +204,20 @@ namespace BooleanAlgebra
             BooleanNode.PrintTree(this.RootExpression);
         }
 
+        //simply checks if the object has a representative truth table
         public bool hasTruthTable()
         {
             return truthTable != null;
         }
 
+        //generates the truth table for this expression object
         private void GenerateTruthTable()
         {
             this.truthTable = new TruthTable(this);
         }
 
-        public String getMinterms()
+        //returns a string representing a list of all of the minterms covered by this expression
+        public String getMintermString()
         {
             if (!this.hasTruthTable())
             {
@@ -224,6 +227,17 @@ namespace BooleanAlgebra
             return this.truthTable.MintermString();
         }
 
+        //returns a list of minterms
+        public List<int> getMintermList()
+        {
+            if (!this.hasTruthTable())
+            {
+                this.GenerateTruthTable();
+            }
+            return this.truthTable.minterms;
+        }
+
+        //returns the truth table represented by this expression
         public String getTruthTable()
         {
             if (!this.hasTruthTable())
@@ -234,7 +248,10 @@ namespace BooleanAlgebra
             return this.truthTable.ToString();
         }
 
-
+        /*
+         * Checks if this expression is equal to another by comparing the mintersm covered by it and a comparison
+         * if the two objects cover the same minters they are by definition equal, else there are not equal
+         */
         public override bool Equals(object obj)
         {
             BooleanExpression expression = (BooleanExpression) obj;
