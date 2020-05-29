@@ -18,7 +18,6 @@ namespace BooleanAlgebra
         private Boolean foundPrimes;
         private Boolean fullySimplified;
         private int implicantLength;
-        private int currentColumnNum;
 
 
         public Quine(int[] minterms, int impLength)
@@ -45,8 +44,8 @@ namespace BooleanAlgebra
         public Quine(int[] minterms) : this(minterms, (int)Math.Ceiling(Math.Log2(minterms.Max()))) { }
 
         /**
-            * Simplifies the function first by finding the prime minterms and them the essential prime imlicants
-            */
+        * Simplifies the function first by finding the prime minterms and them the essential prime imlicants
+        */
         public List<Implicant> simplify()
         {
             this.findPrimeImplicants();
@@ -64,15 +63,16 @@ namespace BooleanAlgebra
          */
         private void findPrimeImplicants()
         {
+            int currentColumnNum = 0;
             do
             {
                 //System.Console.WriteLine(this.columns[currentColumnNum].ToString());
-                QuineColumn currentColumn = this.columns[this.currentColumnNum];
+                QuineColumn currentColumn = this.columns[currentColumnNum];
                 Tuple<QuineColumn, List<Implicant>> tempTuple = QuineColumn.ColumnSimplify(currentColumn);
                 //this.primeImplicants.AddRange(tempTuple.Item2);
                 this.primeImplicants.AddRange(tempTuple.Item2);
                 this.columns.Add(tempTuple.Item1);
-                this.currentColumnNum += 1;
+                currentColumnNum += 1;
             } while (!this.columns[currentColumnNum].Equals(columns[currentColumnNum - 1])); // continue as long as simplification still occurs
             this.foundPrimes = true;
         }

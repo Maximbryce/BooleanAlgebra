@@ -62,7 +62,7 @@ namespace ConsoleInterface
                     break;
             }
         }
-        protected virtual bool hasCurrentObject()
+        protected override bool hasCurrentObject()
         {
             if (currentObject == null)
             {

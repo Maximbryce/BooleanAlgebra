@@ -221,25 +221,6 @@ namespace BooleanAlgebra
             return base.Equals(obj) && System.Linq.Enumerable.SequenceEqual(this.nullValue, implicant.nullValue); //&& System.Linq.Enumerable.SequenceEqual(implicant.parents, this.parents);
         }
 
-
-        public String ToExpression()
-        {
-            String expression = "";
-
-            for(int i = 0; i < this.bitValue.Length; i ++)
-            {
-                if(this.nullValue[i] == false)
-                {
-                    expression += (char)('A' + i);
-                    if (this.bitValue[i] == false)
-                    {
-                        expression += "'";
-                    }
-                }
-            }
-            return expression;
-        }
-
         public int numVariables()
         {
             int count = 0;
@@ -270,6 +251,44 @@ namespace BooleanAlgebra
             return newList;
         }
 
+        //uses default variables A then B then C and so on
+        public String ToExpression()
+        {
+            String expression = "";
+
+            for (int i = 0; i < this.bitValue.Length; i++)
+            {
+                if (this.nullValue[i] == false)
+                {
+                    expression += (char)('A' + i);
+                    if (this.bitValue[i] == false)
+                    {
+                        expression += "'";
+                    }
+                }
+            }
+            return expression;
+        }
+
+        // A way yo force the variables used
+        public String ToExpression(List<String> variables)
+        {
+            String expression = "";
+
+            for (int i = 0; i < this.bitValue.Length; i++)
+            {
+                if (this.nullValue[i] == false)
+                {
+                    expression += variables[i];
+                    if (this.bitValue[i] == false)
+                    {
+                        expression += "'";
+                    }
+                }
+            }
+            return expression;
+        }
+
         public static String ConvertToExpression(List<Implicant> implicants)
         {
             StringBuilder expression = new StringBuilder();
@@ -283,7 +302,6 @@ namespace BooleanAlgebra
             }
 
             return expression.ToString();
-
         }
     }
 }

@@ -72,10 +72,9 @@ namespace ConsoleInterface
                         }
                     }
                     break;
-                //TODO This returns different variables, maybe hardcode the variables used into the implicant translation function on the Implicant class
                 case "simplify":
-                    Quine simplification = new Quine(this.currentObject.getMintermList());
-                    Console.WriteLine(simplification.ExpressionString());
+                    Console.WriteLine("The simplest expression is: ");
+                    Console.WriteLine(this.currentObject.simplify().ToString());
                     break;
                 case "exit":
                     break;
@@ -84,7 +83,7 @@ namespace ConsoleInterface
                     break;
             }
         }
-        protected virtual bool hasCurrentObject()
+        protected override bool hasCurrentObject()
         {
             if (currentObject == null)
             {

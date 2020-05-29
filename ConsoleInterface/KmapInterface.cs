@@ -87,7 +87,7 @@ namespace ConsoleInterface
                 }
             } while (!userInput.Equals("cancel"));
         }
-        protected virtual bool hasCurrentObject()
+        protected override bool hasCurrentObject()
         {
             if (currentObject == null)
             {

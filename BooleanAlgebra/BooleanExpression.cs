@@ -165,12 +165,12 @@ namespace BooleanAlgebra
 
             StringBuilder newExpression = new StringBuilder(Implicant.ConvertToExpression(essentialImplicants));
 
-            Console.WriteLine("Intermediate expression: " + newExpression.ToString());
+            //Console.WriteLine("Intermediate expression: " + newExpression.ToString());
             
             for(int i = 0; i < this.VariableNodes.Keys.Count; i++)
             {
                 newExpression.Replace($"{(char)('A' + i)}", this.VariableNodes.Keys.ElementAt(i).ToLower());
-                Console.WriteLine("Replacing " + $"{(char)('A' + i)}" + " with " + this.VariableNodes.Keys.ElementAt(i));
+                //Console.WriteLine("Replacing " + $"{(char)('A' + i)}" + " with " + this.VariableNodes.Keys.ElementAt(i));
             }
 
             return new BooleanExpression(newExpression.ToString());
@@ -267,19 +267,14 @@ namespace BooleanAlgebra
             {
                 return true;
             }
-            if (this.truthTable == null)
-            {
-                this.GenerateTruthTable();
-            }
-            if (expression.truthTable == null)
-            {
-                expression.GenerateTruthTable();
-            }
-            if (this.truthTable.Equals(expression.truthTable))
+            else if (this.simplify().ToString().Equals(expression.simplify().ToString()))
             {
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
     }
 }
