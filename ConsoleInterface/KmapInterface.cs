@@ -9,7 +9,7 @@ namespace ConsoleInterface
 {
     public class KmapInterface:Landing
     {
-        private KarnaughMap currentKmap;
+        private KarnaughMap currentObject;
 
         public KmapInterface()
         {
@@ -37,13 +37,13 @@ namespace ConsoleInterface
                     newKmap();
                     break;
                 case "print":
-                    Console.WriteLine(currentKmap.ToString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.ToString());}
                     break;
                 case "minterms":
-                    Console.WriteLine(currentKmap.MintermString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.MintermString());}
                     break;
                 case "expression":
-                    Console.WriteLine(currentKmap.getSimpleExpression());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.getSimpleExpression());}
                     break;
                 default:
                     Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
@@ -68,7 +68,7 @@ namespace ConsoleInterface
                     else
                     {
                         BooleanExpression tempExpression = new BooleanExpression(expression);
-                        currentKmap = new KarnaughMap(tempExpression);
+                        currentObject = new KarnaughMap(tempExpression);
                         break;
                     }
                 }
@@ -76,7 +76,7 @@ namespace ConsoleInterface
                 {
                     Console.WriteLine("Please enter how many variables are in this kmap (2-5)");
                     int numVariables = getNumber();
-                    currentKmap = new KarnaughMap(getMintermlist(), numVariables);
+                    currentObject = new KarnaughMap(getMintermlist(), numVariables);
                     break;
                 }
                 else

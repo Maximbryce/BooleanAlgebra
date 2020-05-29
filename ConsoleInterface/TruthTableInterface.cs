@@ -7,7 +7,7 @@ namespace ConsoleInterface
 {
     class TruthTableInterface : Landing
     {
-        private TruthTable currentTable;
+        private TruthTable currentObject;
 
         public TruthTableInterface()
         {
@@ -32,16 +32,19 @@ namespace ConsoleInterface
                 case "new":
                     String expression = getExpression();
                     if (expression.Equals("")) { Console.WriteLine("Canceling"); }
-                    else { this.currentTable = new TruthTable(new BooleanExpression(expression)); }
+                    else { this.currentObject = new TruthTable(new BooleanExpression(expression));}
                     break;
                 case "print":
-                    Console.WriteLine(this.currentTable.ToString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(this.currentObject.ToString());}
                     break;
                 case "expression":
-                    Console.WriteLine(this.currentTable.expression);
+                    if (this.hasCurrentObject()) {Console.WriteLine(this.currentObject.expression);}
                     break;
                 case "minterms":
-                    Console.WriteLine(this.currentTable.MintermString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(this.currentObject.MintermString());}
+                    break;
+                default:
+                    Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
                     break;
             }
         }

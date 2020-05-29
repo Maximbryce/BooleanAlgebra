@@ -7,7 +7,7 @@ namespace ConsoleInterface
 {
     class ExpressionInterface:Landing
     {
-        private BooleanExpression currentExpression;
+        private BooleanExpression currentObject;
 
         public ExpressionInterface()
         {
@@ -36,33 +36,43 @@ namespace ConsoleInterface
                     String expression = getExpression();
                     if (!expression.Equals(""))
                     {
-                        this.currentExpression = new BooleanExpression(expression);
+                        this.currentObject = new BooleanExpression(expression);
                     }
                     break;
                 case "print":
-                    Console.WriteLine(currentExpression.ToString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.ToString());}
                     break;
                 case "minterms":
-                    Console.WriteLine(currentExpression.getMinterms());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.getMinterms());}
                     break;
                 case "table":
-                    Console.WriteLine(currentExpression.getTruthTable());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.getTruthTable());}
                     break;
                 case "equal":
-                    String newExpression = getExpression();
-                    if (!newExpression.Equals(""))
+                    if (this.currentObject == null)
                     {
-                        BooleanExpression tempCompare = new BooleanExpression(newExpression);
-                        Boolean equality = this.currentExpression.Equals(tempCompare);
-                        if (equality)
+                        Console.WriteLine("There is no current object to compare to, please create one first");
+                    }
+                    else
+                    {
+                        String newExpression = getExpression();
+                        if (!newExpression.Equals(""))
                         {
-                            Console.WriteLine("The two expressions are equal");
-                        }
-                        else
-                        {
-                            Console.WriteLine("The two expressions are not equal");
+                            BooleanExpression tempCompare = new BooleanExpression(newExpression);
+                            Boolean equality = this.currentObject.Equals(tempCompare);
+                            if (equality)
+                            {
+                                Console.WriteLine("The two expressions are equal");
+                            }
+                            else
+                            {
+                                Console.WriteLine("The two expressions are not equal");
+                            }
                         }
                     }
+                    break;
+                default:
+                    Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");
                     break;
             }
         }

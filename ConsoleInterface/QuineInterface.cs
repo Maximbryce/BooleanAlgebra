@@ -7,7 +7,7 @@ namespace ConsoleInterface
 {
     class QuineInterface:Landing
     {
-        private Quine currentQuine;
+        private Quine currentObject;
 
         public QuineInterface()
         {
@@ -34,23 +34,26 @@ namespace ConsoleInterface
             switch (input)
             {
                 case "new":
-                    this.currentQuine = new Quine(getMintermlist());
+                    this.currentObject = new Quine(getMintermlist());
                     break;
                 case "print":
-                    Console.WriteLine(currentQuine.ToString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.ToString());}
                     break;
                 case "step":
-                    currentQuine.StepThrough();
+                    if (this.hasCurrentObject()) {currentObject.StepThrough();}
                     break;
                 case "minterms":
-                    Console.WriteLine(currentQuine.mintermString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.mintermString());}
                     break;
                 case "expression":
-                    Console.WriteLine(currentQuine.ExpressionString());
+                    if (this.hasCurrentObject()) {Console.WriteLine(currentObject.ExpressionString()); }
                     break;
                 case "column":
-                    Console.Write("What column would you like to print?: \n");
-                    Console.WriteLine(currentQuine.columnString(getNumber()));
+                    if (this.hasCurrentObject())
+                    {
+                        Console.Write("What column would you like to print?: \n");
+                        Console.WriteLine(currentObject.columnString(getNumber()));
+                    }
                     break;
                 default:
                     Console.WriteLine("Invalid command, please enter a new command, type 'help' for options");

@@ -6,6 +6,8 @@ namespace ConsoleInterface
 {
     public class Landing
     {
+        private Landing currentObject;
+
         static void Main(string[] args)
         {
             Landing firstLanding = new Landing();
@@ -50,7 +52,7 @@ namespace ConsoleInterface
 
             return false;
         }
-        
+
         protected virtual void interpretInput(String input)
         {
             switch (input)
@@ -119,7 +121,7 @@ namespace ConsoleInterface
             String userInput = Console.ReadLine();
             int num;
             bool isNumber = int.TryParse(userInput, out num);
-            while(!isNumber)
+            while (!isNumber)
             {
                 Console.WriteLine("That is not a valid number, please try again \n> ");
                 userInput = Console.ReadLine();
@@ -127,6 +129,15 @@ namespace ConsoleInterface
             }
 
             return num;
+        }
+        protected bool hasCurrentObject()
+        {
+            if (this.currentObject == null)
+            {
+                Console.WriteLine("There is no current object, create one first");
+                return false;
+            }
+            return true;
         }
     }
 }
