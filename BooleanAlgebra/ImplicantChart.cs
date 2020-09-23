@@ -72,7 +72,6 @@ namespace BooleanAlgebra
         /**
          * Looks through to find implicant minterm values that are only covered by one specific Implicant
          * The returns a list of Prime minterms that could or could not be essential minterms, need to find through patrick method.
-         * TODO Implement a Clonable interface for better practice
          */
         private Tuple<List<Implicant>, List<Int32>> initialFind(List<Implicant> primeImplicants, List<Int32> minterms)
         {
@@ -118,7 +117,6 @@ namespace BooleanAlgebra
             return new Tuple<List<Implicant>, List<int>>(maybeEssential, mintermsLeft);
         }
 
-        //TODO add a method of finding the rest of the essential prime minterms, probobly best used with patriks method
         /**
          * Finds all of the essential prime minterms from a list of prime implicant
          */

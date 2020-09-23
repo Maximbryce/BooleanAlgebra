@@ -8,11 +8,11 @@ namespace BooleanAlgebra
 {
     public class BooleanExpression
     {
-        public String StringExpression { get; private set; }
-        public List<String> Variables { get; private set; }
+        public String StringExpression { get; protected set; }
+        public List<String> Variables { get; protected set; }
         public TruthTable truthTable { get; private set; }
-        private Dictionary<String, List<VariableNode>> VariableNodes;
-        private BooleanNode RootExpression;
+        protected Dictionary<String, List<VariableNode>> VariableNodes;
+        protected BooleanNode RootExpression;
 
         // Constructor
         public BooleanExpression(String expression)
@@ -267,7 +267,7 @@ namespace BooleanAlgebra
             {
                 return true;
             }
-            else if (this.simplify().ToString().Equals(expression.simplify().ToString()))
+            else if (this.simplify().ToString().Equals(expression.simplify().ToString())) // checks to see if the simplest expressions are the same
             {
                 return true;
             }

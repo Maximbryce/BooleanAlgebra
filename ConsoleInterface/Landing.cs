@@ -58,16 +58,16 @@ namespace ConsoleInterface
             switch (input)
             {
                 case "kmap":
-                    new KmapInterface();
+                    currentObject = new KmapInterface();
                     break;
                 case "quine":
-                    new QuineInterface();
+                    currentObject = new QuineInterface();
                     break;
                 case "expression":
-                    new ExpressionInterface();
+                    currentObject = new ExpressionInterface();
                     break;
                 case "table":
-                    new TruthTableInterface();
+                    currentObject = new TruthTableInterface();
                     break;
                 case "exit":
                     break;

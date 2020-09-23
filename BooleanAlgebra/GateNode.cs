@@ -22,6 +22,7 @@ namespace BooleanAlgebra
          */
         public void CleanUpExpression()
         {
+            //Moved to the Boolean Expression class
             /*
             if (this.Expression.Equals(""))
             {
