@@ -5,7 +5,7 @@ namespace NumberConversion
 {
     public class NumberConvert
     {
-        public static String ConvertToBase(String value, int fromBase, int toBase, int length = 8)
+        public static String ConvertToBase(String value, int fromBase, int toBase, int length = 0)
         {
             if (toBase == 16)
             {
