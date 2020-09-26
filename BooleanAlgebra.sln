@@ -15,10 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberConversion", "NumberC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberConversionTests", "NumberConversionTests\NumberConversionTests.csproj", "{A4B61BF4-A0F0-4253-85AE-3675733B4D26}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsInterface", "WindowsInterface\WindowsInterface.csproj", "{0C488778-9D4E-4897-A42E-A030C08FB17C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0A4DF735-DDD6-4958-A3F4-DB3E6E77A278} = {0A4DF735-DDD6-4958-A3F4-DB3E6E77A278}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{EF8C085E-E4C2-4E55-889F-8F6DD09B9604}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +47,10 @@ Global
 		{A4B61BF4-A0F0-4253-85AE-3675733B4D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4B61BF4-A0F0-4253-85AE-3675733B4D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4B61BF4-A0F0-4253-85AE-3675733B4D26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C488778-9D4E-4897-A42E-A030C08FB17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C488778-9D4E-4897-A42E-A030C08FB17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C488778-9D4E-4897-A42E-A030C08FB17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C488778-9D4E-4897-A42E-A030C08FB17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8C085E-E4C2-4E55-889F-8F6DD09B9604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8C085E-E4C2-4E55-889F-8F6DD09B9604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8C085E-E4C2-4E55-889F-8F6DD09B9604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8C085E-E4C2-4E55-889F-8F6DD09B9604}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,7 @@ namespace NumberConversion
         {
             if (toBase == 16)
             {
+                //TODO Converting from decimal to hex doesn't seem to force the correct number of digits
                 return Convert.ToInt32(value, fromBase).ToString($"X{length}");
             }
 
@@ -31,18 +32,18 @@ namespace NumberConversion
             }
         }
 
-        public static String TwosComplement(string value, int numBase, int length = -1)
+        public static String TwosComplement(string value, int numBase, int length = 0)
         {
             if (numBase == 2)
             {
-                if (length == -1) // -1 is a signal to update based on the value of value.length
-                {
-                    length = value.Length;
-                }
                 //twos compliment can be written as maxvalue - value
-                int maxValue = (int) Math.Pow(2, length);
+                int maxValue = (int) Math.Pow(2, value.Length);
                 int twoCompDecimalNum = maxValue - Convert.ToInt32(value,2);
-                return ConvertToBase(twoCompDecimalNum.ToString(), 10, 2, length);
+                String bitVal= ConvertToBase(twoCompDecimalNum.ToString(), 10, 2);
+                int num0 = length - bitVal.Length; // the number of zeros that need to be prepended to reach desired length
+                num0 = Math.Max(0, num0); // dont want to append negative values
+                string prepend = new string('0', num0);
+                return prepend + bitVal;
             }
             else
             {
