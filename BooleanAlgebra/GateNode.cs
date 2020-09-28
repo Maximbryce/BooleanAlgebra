@@ -10,7 +10,7 @@ namespace BooleanAlgebra
      */
     public class GateNode : BooleanNode
     {
-
+        
         public GateNode(String expression)
         {
             this.Expression = expression;
@@ -22,45 +22,6 @@ namespace BooleanAlgebra
          */
         public void CleanUpExpression()
         {
-            //Moved to the Boolean Expression class
-            /*
-            if (this.Expression.Equals(""))
-            {
-                Console.WriteLine("ERROR");
-            }
-            this.Expression = Expression.Trim(); // Trim by removeing extra spaces at end and beginning
-            this.Expression = this.Expression.Replace(" ", ""); // removes any inline spaces 
-            //Adds any let out or forgotten multiplication marks ie (A+B)(A+B) -> (A+B)*(A+B)
-            for (int i = 0; i < this.Expression.Length; i++)
-            {
-                if (Char.IsLetter(Expression[i]))
-                {
-                    if (Char.IsLower(Expression[i]))
-                    {
-                        Expression = Expression.Substring(0, i) + Char.ToUpper(Expression[i]) + Expression.Substring(i + 1);
-                    }
-                    //Checks to make sure there are multiplication points where vairbale AND occurs
-                    if (i != Expression.Length - 1)
-                    {
-                        if (Char.IsLetter(Expression[i + 1]))
-                        {
-                            Expression = Expression.Substring(0, i + 1) + "*" + Expression.Substring(i + 1);
-                        }
-                        //Make sure not out of bounds accessing
-                        else if (i != Expression.Length - 2 && (Expression[i + 1] == '\'' || Expression[i + 1] == ')'))
-                        {
-                            //Where the next char is a inversion or maybe a parenthesis and the AND (*) needs to go after
-                            // ie (A+B)'*
-                            if (Char.IsLetter(Expression[i + 2]))
-                            {
-                                Expression = Expression.Substring(0, i + 2) + "*" + Expression.Substring(i + 2);
-                            }
-                        }
-                    }
-                }
-            }
-            */
-
             if (Expression[0] == '(' && Expression[Expression.Length - 1] == ')' && this.findSplitPoint() == -1) // will hopefully remove any unecessary or unhelpful parenthesis
             {
                 this.Expression = this.Expression.Substring(1, Expression.Length - 2);
